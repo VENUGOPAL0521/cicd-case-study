@@ -158,6 +158,7 @@ def create_order():
     }
     return jsonify(ORDERS[order_id]), 201
 
+
 @app.get("/orders/<order_id>")
 def get_order(order_id):
     order = ORDERS.get(order_id)
@@ -175,4 +176,3 @@ if __name__ == "__main__":  # pragma: no cover
     print("  3. Orders API   : http://localhost:8080/orders")
     print("==================================================\n")
     app.run(host="0.0.0.0", port=8080)
-
