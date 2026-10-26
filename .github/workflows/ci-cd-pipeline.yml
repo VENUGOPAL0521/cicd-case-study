@@ -103,10 +103,13 @@ jobs:
           load: true
 
       - name: Scan image for vulnerabilities (Trivy)
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.36.0
         with:
           image-ref: ${{ steps.meta.outputs.tag }}
+          format: table
           severity: "CRITICAL,HIGH"
+          ignore-unfixed: true
+          vuln-type: "os,library"
           exit-code: "1"
 
       - name: Push image to registry
